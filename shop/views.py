@@ -26,7 +26,7 @@ def create_order(request):
             quantity=c['qty'],
             price=item.price*c['qty']
         )
-    return response({"order_id":order_id,"message":"Order placed successfully"})
+    return Response({"order_id":order_id,"message":"Order placed successfully"})
 @api_view(['GET'])
 def user_orders(request,user_id):
     orders=Order.objects.filter(user__id=user_id).order_by('-created_at')
